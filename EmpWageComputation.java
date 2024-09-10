@@ -16,20 +16,7 @@ public class EmpWageComputation {
         while (totalEmpHours < MAX_WORKING_HOURS && totalWorkingDays < MAX_WORKING_DAYS) {
             totalWorkingDays++;
 
-            int empCheck = (int) Math.floor(Math.random() * 10) % 3;
-
-            int empHours = 0;
-
-            if (empCheck == IS_FULL_TIME) {
-                empHours = 8;
-                System.out.println("Day " + totalWorkingDays + ": Employee is Present (Full-Time)");
-            } else if (empCheck == IS_PART_TIME) {
-                empHours = 4;
-                System.out.println("Day " + totalWorkingDays + ": Employee is Present (Part-Time)");
-            } else {
-                empHours = 0;
-                System.out.println("Day " + totalWorkingDays + ": Employee is Absent");
-            }
+            int empHours = getWorkHours();
 
             totalEmpHours += empHours;
 
@@ -43,5 +30,23 @@ public class EmpWageComputation {
         System.out.println("Total Employee Wage for the Month: " + totalEmpWage);
         System.out.println("Total Working Days: " + totalWorkingDays);
         System.out.println("Total Working Hours: " + totalEmpHours);
+    }
+
+    public static int getWorkHours() {
+        int empCheck = (int) Math.floor(Math.random() * 10) % 3;
+        int empHours;
+
+        if (empCheck == IS_FULL_TIME) {
+            empHours = 8;
+            System.out.println("Employee is Present (Full-Time)");
+        } else if (empCheck == IS_PART_TIME) {
+            empHours = 4;
+            System.out.println("Employee is Present (Part-Time)");
+        } else {
+            empHours = 0;
+            System.out.println("Employee is Absent");
+        }
+
+        return empHours;
     }
 }
